@@ -12,21 +12,21 @@ model.fit(data[['manh_distance', 'bus_time', 'base', 'sqm_value']], data['price'
 
 # Define the Streamlit app
 def app():
-    st.title('House Price Prediction')
+    st.title('Modello di Machine Learning di previsione prezzo aste XQUARE ')
     st.markdown('Enter the details of the house below to predict its price.')
 
     # Create the input fields
-    manh_distance = st.slider('walking distance to City centre', min_value=1, max_value=15, value=2)
-    bus_time = st.number_input('Bus time to City centre', min_value=10, max_value=60, value=11)
-    base = st.number_input('Auction base', min_value=50000, max_value=350000, value=68000)
-    sqm_value = st.number_input('OMI value', min_value=800, max_value=5000, value=2500)
-    size = st.number_input('apartment size',min_value=30, max_value= 300 , value = 120)
+    manh_distance = st.slider('Distanza a piedi dal Centro in KM', min_value=1, max_value=15, value=2)
+    bus_time = st.number_input('Distanza con i mezzi pubblici da Centro in minuti', min_value=10, max_value=60, value=11)
+    base = st.number_input('Base asta', min_value=30000, max_value=350000, value=68000)
+    sqm_value = st.number_input('Valore medio OMI della zona', min_value=800, max_value=5000, value=2500)
+    size = st.number_input('Consistenza',min_value=30, max_value= 300 , value = 120)
     # Predict the price
-    price = model.predict([[manh_distance, bus_time, base, sqm_value]])
+    price = model.predict([[manh_distance, bus_time, base, sqm_value,size]])
 
     # Display the result
-    st.subheader('Predicted Price')
-    st.write('${:,.2f}'.format(price[0]))
+    st.subheader('Prezzo di aggiudicazione')
+    st.write('€{:,.2f}'.format(price[0]))
 
 # Run the app
 if __name__ == '__main__':
