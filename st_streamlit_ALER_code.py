@@ -13,7 +13,7 @@ model.fit(data[['manh_distance', 'bus_time', 'base', 'sqm_value','size']], data[
 # Define the Streamlit app
 def app():
     st.title('Modello di Machine Learning di previsione prezzo aste XQUARE ')
-    st.markdown('Enter the details of the house below to predict its price.')
+    st.markdown('Compilare i campi richiesti per ottenere la previsione di prezzo.')
 
     # Create the input fields
     manh_distance = st.slider('Distanza a piedi dal Centro in KM', min_value=1, max_value=15, value=2)
