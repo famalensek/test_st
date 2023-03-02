@@ -8,7 +8,7 @@ data = pd.read_excel('ALER_ASTE_BANDITE.xlsx')
 
 # Create the linear regression model
 model = LinearRegression()
-model.fit(data[['manh_distance', 'bus_time', 'base', 'sqm_value']], data['price'])
+model.fit(data[['manh_distance', 'bus_time', 'base', 'sqm_value','size']], data['price'])
 
 # Define the Streamlit app
 def app():
